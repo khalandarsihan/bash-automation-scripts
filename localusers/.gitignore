@@ -1,0 +1,11 @@
+# Ignore swap files
+*.swp
+
+# Ignore Vagrant directory
+.vagrant/
+
+# Ignore basic shell scripting files
+luser.sh
+luser2.sh
+luser3.sh
+luser4.sh

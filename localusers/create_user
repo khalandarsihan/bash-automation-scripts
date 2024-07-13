@@ -1,0 +1,30 @@
+#! /bin/bash
+
+# This script creates an account on the local system.
+# You will be prompted for the account name, real name, and password.
+
+# Ask for the username.
+read -p 'Enter the username to create: ' USER_NAME  # The read command reads input and stores it in the specified variable. The -p option displays the prompt message.
+
+# Ask for the real name of the person.
+read -p 'Enter the name of the person who this account is for: ' COMMENT  # Prompt for the real name of the user for the account.
+
+# Ask for the password.
+read -p 'Enter the password to use for the account: ' PASSWORD  # Prompt for the password for the account.
+
+# Create the user.
+useradd -c "${COMMENT}" -m ${USER_NAME}  # The -c option adds a comment (real name). The -m option creates a home directory for the user.
+# Double quotes around the COMMENT variable handle spaces in the input.
+
+# Set the password for the user.
+# The echo command formats the username and password as required by chpasswd.
+# The chpasswd command reads the username:password pair from the pipe to set the password.
+echo "${USER_NAME}:${PASSWORD}" | sudo chpasswd
+
+# Note: The following was initially attempted but is not supported on this system.
+# echo ${PASSWORD} | passwd --stdin ${USER_NAME}  # The --stdin option allows passwd to read the password from standard input.
+# However, this option is not available on all systems, such as Debian-based distributions like Ubuntu.
+
+# Force password change on first login.
+passwd -e ${USER_NAME}  # The -e option forces the user to change the password after logging in for the first time.
+
