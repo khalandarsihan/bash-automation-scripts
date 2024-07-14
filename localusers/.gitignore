@@ -14,6 +14,8 @@ luser4.sh
 luser5.sh
 luser6.sh
 luser7.sh
+luser8.sh
 
 add-local-user.sh.bkp
 add-new-local-user.sh.bkp
+add-newer-local-user.sh.bkp
